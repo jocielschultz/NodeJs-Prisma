@@ -3,7 +3,8 @@
 ## Express
 
 yarn dev
-porta 4000
+
+localhost:4000
 
 ## Prisma - versão Node 12+
 
