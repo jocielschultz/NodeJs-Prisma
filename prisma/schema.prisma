@@ -1,0 +1,30 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model Cidade {
+  id          String @id @default(uuid())
+  nome        String
+  estado      String
+  created_at  DateTime @default(now())
+
+  @@map("cidades")
+  clientes Cliente[]
+}
+
+model Cliente {
+  id              String @id @default(uuid())
+  nomeCompleto    String
+  sexo            String
+  dataNascimento  DateTime
+  cidade          Cidade @relation(fields: [cidade_id], references: [id])
+  created_at      DateTime @default(now())
+
+  @@map("clientes")
+  cidade_id       String
+}
